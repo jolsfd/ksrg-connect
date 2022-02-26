@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/jolsfd/ksrg-connect-backend/cmd"
+	"github.com/jolsfd/ksrg-connect/cmd"
 )
 
 func main() {

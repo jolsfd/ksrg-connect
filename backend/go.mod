@@ -1,4 +1,4 @@
-module github.com/jolsfd/ksrg-connect-backend
+module github.com/jolsfd/ksrg-connect
 
 go 1.17
 
