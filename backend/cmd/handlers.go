@@ -457,13 +457,6 @@ func DeleteUserHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Para
 func SignOutHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
 
-	// Check user credentials user from jwt
-	_, err := CheckJWTCookie(r)
-	if err != nil {
-		ErrorJSON(w, "Access denied", http.StatusForbidden)
-		return
-	}
-
 	// Create empty jwtCookie
 	newCookie := http.Cookie{
 		Name:     "token",
@@ -476,7 +469,7 @@ func SignOutHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params)
 
 	http.SetCookie(w, &newCookie)
 
-	err = json.NewEncoder(w).Encode(ApiMessage{Success: true, Message: "Successfully signed out"})
+	err := json.NewEncoder(w).Encode(ApiMessage{Success: true, Message: "Successfully signed out"})
 	if err != nil {
 		log.Println(err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
