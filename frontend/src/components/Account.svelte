@@ -16,7 +16,7 @@
   let data = null;
 
   onMount(async () => {
-    const res = await fetch("http://localhost:8000/api/profile", {
+    const res = await fetch(API_URL + "api/profile", {
       method: "GET",
       credentials: "include",
     });

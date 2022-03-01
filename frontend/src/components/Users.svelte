@@ -8,7 +8,7 @@
     let searchString = '';
     
     onMount(async() => {
-        const res = await fetch('http://localhost:8000/api/users',{
+        const res = await fetch(API_URL + 'api/users',{
             method: "GET",
             credentials: "include"
         });

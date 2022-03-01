@@ -11,7 +11,7 @@
 
   export let name;
 
-  console.log("Frontend started successfully", name);
+  console.log("Frontend started successfully", name,API_URL);
 
   let signedIn;
 

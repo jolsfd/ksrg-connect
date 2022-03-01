@@ -40,3 +40,14 @@ type ApiMessage struct {
 	Success bool   `json:"success"`
 	Message string `json:"msg"`
 }
+
+// Struct for configuration
+type Config struct {
+	Port                   string   `mapstructure:"port"`
+	Domain                 string   `mapstructure:"domain"`
+	AllowedOrigins         []string `mapstructure:"origins"`
+	PathToDB               string   `mapstructure:"database"`
+	TokenDuration          int      `mapstructure:"duration"`
+	SecretString           string   `mapstructure:"secret"`
+	AuthenticationPassword string   `mapstructure:"password"`
+}

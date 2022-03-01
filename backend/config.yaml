@@ -1,0 +1,7 @@
+port: ":8000"
+domain: "example.com"
+origins: "http://localhost:8080"
+database: "./database/test.db"
+duration: 24
+secret: "secretString"
+password: "supersecretpassword"

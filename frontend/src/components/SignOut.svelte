@@ -7,7 +7,7 @@
     let result = null;
 
     onMount(async() => {
-        const res = await fetch('http://localhost:8000/api/signout',{
+        const res = await fetch(API_URL + 'api/signout',{
             method: "POST",
             credentials: "include"
         });

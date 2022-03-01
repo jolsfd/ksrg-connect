@@ -31,7 +31,7 @@ func CreateJWTCookie(username string) (http.Cookie, error) {
 	jwtCookie := &http.Cookie{
 		Name:     "token",
 		Value:    jwtToken,
-		Expires:  time.Now().Add(TokenDuration),
+		Expires:  time.Now().Add(time.Hour * time.Duration(AppConfig.TokenDuration)),
 		Path:     "/api",
 		Secure:   false,
 		HttpOnly: true,
@@ -100,7 +100,7 @@ func SignUpHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 	}
 
 	// Check AuthPassword
-	if userSignUp.AuthPassword != AuthenticationPassword {
+	if userSignUp.AuthPassword != AppConfig.AuthenticationPassword {
 		ErrorJSON(w, "authentication password is incorrect", http.StatusForbidden)
 		return
 	}

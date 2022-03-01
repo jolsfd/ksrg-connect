@@ -15,7 +15,7 @@
   let result = null;
 
   async function signUp() {
-    const res = await fetch("http://localhost:8000/api/signup", {
+    const res = await fetch(API_URL + "api/signup", {
       method: "POST",
       body: JSON.stringify({
         username,

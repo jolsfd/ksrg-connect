@@ -81,18 +81,18 @@ func ValidatePassword(password string) (err error) {
 // CreateToken creates an jwt token with a username as claim. The token is 2 days valid.
 func CreateToken(username string) (tokenString string, err error) {
 	// Generate Unix time
-	tokenDuration, err := time.ParseDuration("24h")
-	if err != nil {
-		return tokenString, err
-	}
+	// tokenDuration, err := time.ParseDuration("24h")
+	// if err != nil {
+	// 	return tokenString, err
+	// }
 
-	validTime := time.Now().Add(tokenDuration)
+	validTime := time.Now().Add(time.Hour * time.Duration(AppConfig.TokenDuration))
 
 	// Create json web token
-	claims := CustomClaims{username, jwt.StandardClaims{ExpiresAt: validTime.Unix(), Issuer: Doamin}}
+	claims := CustomClaims{username, jwt.StandardClaims{ExpiresAt: validTime.Unix(), Issuer: AppConfig.Domain}}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
-	tokenString, err = token.SignedString([]byte(SecretString))
+	tokenString, err = token.SignedString([]byte(AppConfig.SecretString))
 
 	return tokenString, err
 }
@@ -100,7 +100,7 @@ func CreateToken(username string) (tokenString string, err error) {
 // AuthenticationFromToken validates an jwt and returns the username for the given token.
 func AuthenticationFromToken(tokenString string) (string, error) {
 	token, err := jwt.ParseWithClaims(tokenString, &CustomClaims{}, func(t *jwt.Token) (interface{}, error) {
-		return []byte(SecretString), nil
+		return []byte(AppConfig.SecretString), nil
 	})
 
 	claims, ok := token.Claims.(*CustomClaims)

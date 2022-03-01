@@ -9,7 +9,7 @@
 
     async function signIn(){
 
-        const res = await fetch('http://localhost:8000/api/signin',{
+        const res = await fetch(API_URL + 'api/signin',{
           method: 'POST',
           credentials: 'include',
           body: JSON.stringify({

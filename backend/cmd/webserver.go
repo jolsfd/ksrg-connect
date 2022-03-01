@@ -20,7 +20,7 @@ func StartServer() {
 	var err error
 
 	// Open database
-	DB, err = sql.Open("sqlite3", PathDB)
+	DB, err = sql.Open("sqlite3", AppConfig.PathToDB)
 	checkError(err)
 	defer DB.Close()
 
@@ -36,10 +36,10 @@ func StartServer() {
 	router := Router()
 
 	// Enable cors for security
-	handler := cors.New(cors.Options{AllowedOrigins: []string{Origins}, AllowCredentials: true}).Handler(router)
+	handler := cors.New(cors.Options{AllowedOrigins: AppConfig.AllowedOrigins, AllowCredentials: true}).Handler(router)
 
 	// Start server
-	fmt.Printf("Server is running on Port%s. End the server with [CTRL + C]\n", PORT)
+	fmt.Printf("Server is running on Port%s. End the server with [CTRL + C]\n", AppConfig.Port)
 
-	log.Fatal(http.ListenAndServe(PORT, handler))
+	log.Fatal(http.ListenAndServe(AppConfig.Port, handler))
 }
