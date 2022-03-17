@@ -29,7 +29,7 @@
             class="bi me-2"
             width="40"
             height="32"
-            src="Bootstrap_logo.svg"
+            src="ksrg-connect_logo.svg"
             alt="Bootstrap"
           />
         </Link>
@@ -160,7 +160,7 @@
             class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
           >
             <svg class="bi" width="30" height="24"
-              ><use xlink:href="#bootstrap" /></svg
+              ><use xlink:href="ksrg-connect_logo.svg" /></svg
             >
           </a>
           <span class="text-muted">&copy; 2022 Jolsfd, Chemnitz</span>
@@ -168,7 +168,7 @@
 
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li class="ms-3">
-            <a class="text-muted" href="google.com"
+            <a class="text-muted" href="github.com/jolsfd/ksrg-connect"
               ><svg class="bi" width="24" height="24"
                 ><use xlink:href="#twitter" /></svg
               ></a
