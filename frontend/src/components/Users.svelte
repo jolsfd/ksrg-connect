@@ -1,5 +1,6 @@
 <script>
     import { onMount } from "svelte";
+import { navigate } from "svelte-navigator";
     import User from "./User.svelte";
 
     let data = [];
@@ -14,6 +15,9 @@
         });
 
         const json = await res.json()
+        if (res.status == 403) {
+            navigate("/signin")
+        }
         data = JSON.parse(JSON.stringify(json))
 
         users = data

@@ -22,6 +22,9 @@
     });
 
     const json = await res.json();
+    if (res.status == 403) {
+            navigate("/signin")
+        }
     data = JSON.parse(JSON.stringify(json));
 
     username = data.username;
