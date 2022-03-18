@@ -33,7 +33,8 @@
     contact = data.contact;
   });
 
-  async function updateUser() {
+  async function updateUser(e) {
+    e.preventDefault();
     const res = await fetch(API_URL + "api/update/user", {
       method: "POST",
       credentials: "include",
@@ -49,6 +50,7 @@
 
     const json = await res.json();
     result = JSON.parse(JSON.stringify(json));
+    console.log(result)
   }
 
   async function updatePassword(e) {
