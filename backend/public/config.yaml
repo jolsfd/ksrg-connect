@@ -1,6 +1,8 @@
 port: ":8000"
 domain: "example.com"
-origins: "http://localhost:8080"
+origins: 
+ - "http://localhost:8080"
+ - "https://localhost"
 database: "./public/test.db"
 duration: 24
 secret: "secretString"
