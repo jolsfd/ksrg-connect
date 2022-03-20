@@ -34,19 +34,19 @@ The following commands are used to run the containers:
 ```bash
 # frontend
 cd frontend
-docker run -p 127.0.0.1:8080:8080 ksrg-connect-frontend
+docker run -d -p 127.0.0.1:8080:8080 ksrg-connect-frontend
 
 # backend
 cd backend
-docker run -p 127.0.0.1:8000:8000 -v /var/ksrg-connect/:/usr/src/app/backend/public/ ksrg-connect-backend
+docker run -d -p 127.0.0.1:8000:8000 -v /var/ksrg-connect/:/usr/src/app/backend/public/ ksrg-connect-backend
 
 # without volume
-docker run -p 127.0.0.1:8000:8000 ksrg-connect-backend
+docker run -d -p 127.0.0.1:8000:8000 ksrg-connect-backend
 ```
 
 
 To serve the website in the internet a reverse proxy is used.
 Caddy sets up the reverse proxy and handles ssl certificates automatically.
 ```bash
-caddy run
+sudo caddy run
 ```
