@@ -33,8 +33,9 @@ func CreateJWTCookie(username string) (http.Cookie, error) {
 		Value:    jwtToken,
 		Expires:  time.Now().Add(time.Hour * time.Duration(AppConfig.TokenDuration)),
 		Path:     "/api",
-		Secure:   false,
+		Secure:   true,
 		HttpOnly: true,
+		SameSite: http.SameSiteNoneMode,
 	}
 
 	return *jwtCookie, nil
