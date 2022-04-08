@@ -50,4 +50,5 @@ type Config struct {
 	TokenDuration          int      `mapstructure:"duration"`
 	SecretString           string   `mapstructure:"secret"`
 	AuthenticationPassword string   `mapstructure:"password"`
+	Admins                 []string `mapstructure:"admins"`
 }

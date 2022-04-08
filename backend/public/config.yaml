@@ -7,3 +7,5 @@ database: "./public/test.db"
 duration: 24
 secret: "secretString"
 password: "supersecretpassword"
+admins:
+- "test"

@@ -25,3 +25,14 @@ or without persistent data
 ```bash
 docker run -p 127.0.0.1:8000:8000 ksrg-connect-backend
 ```
+
+## Configuration
+
+* **Port**: Port where webserver is running
+* **Domain**: Used for json web token creation
+* **Origins**: Allowed origins for example your frontend url (CORS)
+* **Database**: Path to database file
+* **Duration**: Duration in which the json web token is valid in hours
+* **Secret**: Secret string for json web token generation
+* **Password**: Authentication password for sign up
+* **Admins**: Usernames for users who have admin rights. **Warning!**

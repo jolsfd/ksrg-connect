@@ -8,10 +8,10 @@
     export let contact = '';
 </script>
 
-<div class="card">
+<div class="card mt-2">
     <div class="card-body">
       <h5 class="card-title">{firstName}, {lastName}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{age} years old; {schoolClass}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">{age} years old; class: {schoolClass}</h6>
       <p class="card-text">{description}</p>
       <details>
           <summary>Contact information</summary>

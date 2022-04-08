@@ -1,6 +1,6 @@
 <script>
     import { onMount } from "svelte";
-import { navigate } from "svelte-navigator";
+    import { navigate } from "svelte-navigator";
     import User from "./User.svelte";
 
     let data = [];

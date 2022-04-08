@@ -8,6 +8,8 @@
   import Users from "./components/Users.svelte";
   import Home from "./components/Home.svelte";
   import About from "./components/About.svelte";
+  import Admin from "./components/Admin.svelte";
+  import Legal from "./components/Legal.svelte";
 
   export let name;
 
@@ -160,30 +162,28 @@
       <Route path="about" primary={false}>
         <About />
       </Route>
+      <Route path="admin" primary={false}>
+        <Admin />
+      </Route>
+      <Route path="legal" primary={false}>
+        <Legal />
+      </Route>
     </div>
     <div class="container">
       <footer
         class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top"
       >
         <div class="col-md-4 d-flex align-items-center">
-          <span class="text-muted">&copy; 2022 Jolsfd, Chemnitz</span>
+          <span class="text-muted">&copy; 2022 Jolsfd, Chemnitz </span>
+        </div>
+
+        <div class="col-md-4 d-flex align-items">
+          <Link to="legal" class="text-dark" aria-current="page">
+            Datenschutzerklärung/Impressum
+          </Link>
         </div>
 
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-          <!-- <li class="ms-3">
-            <a class="text-muted" href="github.com/jolsfd/ksrg-connect"
-              ><svg class="bi" width="24" height="24"
-                ><use xlink:href="#twitter" /></svg
-              ></a
-            >
-          </li>
-          <li class="ms-3">
-            <a class="text-muted" href="google.com"
-              ><svg class="bi" width="24" height="24"
-                ><use xlink:href="#instagram" /></svg
-              ></a
-            >
-          </li> -->
           <li class="ms-3">
             <a class="text-muted" href="https://github.com/jolsfd/ksrg-connect"
               ><svg class="bi" width="24" height="24"

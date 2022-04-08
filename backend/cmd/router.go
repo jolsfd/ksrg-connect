@@ -21,5 +21,8 @@ func Router() *httprouter.Router {
 	router.GET("/api/users", GetUsersHandler)
 	router.GET("/api/profile", GetProfile)
 
+	// Admin Handler
+	router.POST("/api/admin/delete", AdminDeleteUserHandler)
+
 	return router
 }

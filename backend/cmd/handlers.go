@@ -11,7 +11,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-// ErrorJSON returns an api message with the error as json
+// ErrorJSON returns an api message with the error as json.
 func ErrorJSON(w http.ResponseWriter, error string, code int) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("X-Content-Type-Options", "nosniff")

@@ -110,3 +110,14 @@ func AuthenticationFromToken(tokenString string) (string, error) {
 		return "", err
 	}
 }
+
+// CheckAdmin checks if an user is admin.
+func CheckAdmin(username string, admins []string) bool {
+	for _, admin := range admins {
+		if username == admin {
+			return true
+		}
+	}
+
+	return false
+}
