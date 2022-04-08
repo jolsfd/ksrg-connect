@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { navigate } from "svelte-navigator";
   import { loggedIn } from "../store";
+  import Result from "./Result.svelte";
 
   let username = "";
   let firstName = "";
@@ -104,17 +105,8 @@
   }
 </script>
 
-{#if result}
-  {#if result.success}
-    <div class="alert alert-success" role="alert">
-      {result.msg}
-    </div>
-  {:else}
-    <div class="alert alert-danger" role="alert">
-      {result.msg}
-    </div>
-  {/if}
-{/if}
+<Result result={result} />
+
 <form>
   <div class="mb-3">
     <label for="inputFirstName">First Name</label>

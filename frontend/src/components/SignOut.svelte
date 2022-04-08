@@ -2,6 +2,7 @@
     import { onMount } from "svelte";
     import { loggedIn } from "../store";
     import { navigate } from "svelte-navigator";
+    import Result from "./Result.svelte";
 
 
     let result = null;
@@ -22,14 +23,4 @@
     });
 </script>
 
-{#if result}
-  {#if result.success}
-    <div class="alert alert-success" role="alert">
-      {result.msg}
-    </div>
-  {:else}
-    <div class="alert alert-danger" role="alert">
-      {result.msg}
-    </div>
-  {/if}
-{/if}
+<Result result={result} />

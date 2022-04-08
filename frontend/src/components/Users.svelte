@@ -7,6 +7,8 @@
     let users = [];
 
     let searchString = '';
+
+    export let showUsername = false;
     
     onMount(async() => {
         const res = await fetch(API_URL + 'api/users',{
@@ -25,7 +27,7 @@
 
     function filterUsers(){
         users = data.filter(function(el){
-            return el.firstName.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.lastName.toLowerCase().indexOf(searchString.toLowerCase()) > -1  || el.schoolClass.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.age.toString().toLowerCase().indexOf(searchString.toLowerCase()) > -1;
+            return el.firstName.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.lastName.toLowerCase().indexOf(searchString.toLowerCase()) > -1  || el.schoolClass.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.age.toString().toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.username.toLowerCase().indexOf(searchString.toLowerCase()) > -1;
         })
     }
 </script>
@@ -42,5 +44,5 @@
 </div>
 
 {#each users as item}
-    <User firstName={item.firstName} lastName={item.lastName} schoolClass={item.schoolClass} age={item.age} description={item.description} contact={item.contact} />
+    <User firstName={item.firstName} lastName={item.lastName} schoolClass={item.schoolClass} age={item.age} description={item.description} contact={item.contact} username={item.username} showUsername={showUsername}/>
 {/each}

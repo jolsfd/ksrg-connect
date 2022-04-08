@@ -1,5 +1,6 @@
 <script>
   import { navigate } from "svelte-navigator";
+  import Result from "./Result.svelte";
 
   // Submit values
   let username = "";
@@ -34,23 +35,15 @@
 
     result = JSON.parse(JSON.stringify(json));
 
-    if (result.success){
-      navigate("/signin")
+    if (result.success) {
+      navigate("/signin");
     }
   }
 </script>
 
-{#if result}
-  {#if result.success}
-    <div class="alert alert-success" role="alert">
-      {result.msg}
-    </div>
-  {:else}
-    <div class="alert alert-danger" role="alert">
-      {result.msg}
-    </div>
-  {/if}
-{/if}
+<h2 class="display-5 fw-bold text-center">Sign Up</h2>
+
+<Result result={result} />
 
 <div class="mb-3">
   <label for="inputUsername" class="form-label">Username</label>
@@ -171,8 +164,12 @@
 
 <div class="mb-3 form-check">
   <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-  <label class="form-check-label" for="exampleCheck1">I agree to the terms of use</label>
+  <label class="form-check-label" for="exampleCheck1"
+    >I agree to the terms of use</label
+  >
 </div>
 <button type="submit" class="btn btn-primary" on:click={signUp}>Sign up</button>
-<hr class="my-4">
-<small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+<hr class="my-4" />
+<small class="text-muted"
+  >By clicking Sign up, you agree to the terms of use.</small
+>
