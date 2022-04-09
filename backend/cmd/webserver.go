@@ -10,12 +10,15 @@ import (
 	"github.com/rs/cors"
 )
 
+var AppConfig Config
+
 func checkError(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
+// StartServer starts the webserver.
 func StartServer() {
 	var err error
 

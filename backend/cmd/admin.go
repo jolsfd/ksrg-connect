@@ -10,16 +10,14 @@ import (
 )
 
 // delete users and add in config
-func AdminDeleteUserHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	// Set header
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("X-Content-Type-Options", "nosniff")
+func adminDeleteUserHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	setHeaders(w)
 
 	var deleteUser struct {
 		Username string `json:"deleteUsername"`
 	}
 
-	// Decode request to struct
+	// decode request body
 	err := json.NewDecoder(r.Body).Decode(&deleteUser)
 	if err != nil {
 		log.Println(err)
@@ -27,19 +25,20 @@ func AdminDeleteUserHandler(w http.ResponseWriter, r *http.Request, _ httprouter
 		return
 	}
 
-	// Validate authentication jwt
-	username, err := CheckJWTCookie(r)
+	// authenticate user
+	username, err := checkJWTCookie(r)
 	if err != nil {
-		ErrorJSON(w, "Access denied", http.StatusForbidden)
+		errorJSON(w, "Access denied", http.StatusForbidden)
 		return
 	}
 
-	// Check if user is admin
-	if !CheckAdmin(username, AppConfig.Admins) {
-		ErrorJSON(w, "You are not an admin", http.StatusForbidden)
+	// authenticate admin
+	if !checkAdmin(username, AppConfig.Admins) {
+		errorJSON(w, "You are not an admin", http.StatusForbidden)
 		return
 	}
 
+	// check if user exists
 	userExists, err := CheckUsername(deleteUser.Username)
 	if err != nil {
 		log.Println(err)
@@ -48,11 +47,11 @@ func AdminDeleteUserHandler(w http.ResponseWriter, r *http.Request, _ httprouter
 	}
 
 	if !userExists {
-		ErrorJSON(w, "User doesn't exist", http.StatusForbidden)
+		errorJSON(w, "User doesn't exist", http.StatusForbidden)
 		return
 	}
 
-	// Delete user from database
+	// delete user from database
 	err = DeleteAccount(deleteUser.Username)
 	if err != nil {
 		log.Println(err)
@@ -60,9 +59,8 @@ func AdminDeleteUserHandler(w http.ResponseWriter, r *http.Request, _ httprouter
 		return
 	}
 
-	// Encode to json
-	err = json.NewEncoder(w).Encode(ApiMessage{Success: true, Message: fmt.Sprintf("Account for %s is deleted", deleteUser.Username)})
-	if err != nil {
+	// encode response to json
+	if err := json.NewEncoder(w).Encode(ApiMessage{Success: true, Message: fmt.Sprintf("Account for %s is deleted", deleteUser.Username)}); err != nil {
 		log.Println(err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
