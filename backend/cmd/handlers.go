@@ -197,7 +197,7 @@ func signOutHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params)
 		Value:    "",
 		Expires:  time.Unix(0, 0),
 		Path:     "/api",
-		Secure:   false,
+		Secure:   true,
 		HttpOnly: true,
 	}
 
