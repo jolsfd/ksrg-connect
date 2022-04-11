@@ -151,11 +151,6 @@ func signInHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 		return
 	}
 
-	if !userExists {
-		errorJSON(w, "User does not exist", http.StatusForbidden)
-		return
-	}
-
 	// check password in database
 	hash, err := GetPassword(credentials.Username)
 	if err != nil {
@@ -164,8 +159,8 @@ func signInHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) 
 		return
 	}
 
-	if !checkPasswordHash(credentials.Password, hash) {
-		errorJSON(w, "Password is incorrect", http.StatusForbidden)
+	if !checkPasswordHash(credentials.Password, hash) || !userExists {
+		errorJSON(w, "Username or password is incorrect", http.StatusForbidden)
 		return
 	}
 
