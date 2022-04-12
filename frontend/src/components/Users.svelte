@@ -30,7 +30,15 @@
             return el.firstName.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.lastName.toLowerCase().indexOf(searchString.toLowerCase()) > -1  || el.schoolClass.toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.age.toString().toLowerCase().indexOf(searchString.toLowerCase()) > -1 || el.username.toLowerCase().indexOf(searchString.toLowerCase()) > -1;
         })
     }
+
+    function handleKeydown(e){
+        if (e.keyCode === 13) {
+            filterUsers()
+        }
+    }
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <div class=d-flex>
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" bind:value={searchString}>

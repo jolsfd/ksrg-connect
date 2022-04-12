@@ -39,7 +39,15 @@
       navigate("/signin");
     }
   }
+
+  function handleKeydown(e){
+    if (e.keyCode === 13) {
+      signUp()
+    }
+  }
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <h2 class="display-5 fw-bold text-center">Sign Up</h2>
 

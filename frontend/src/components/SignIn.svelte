@@ -27,7 +27,15 @@
       navigate("/explore");
     }
   }
+
+  function handleKeydown(e){
+    if (e.keyCode === 13) {
+      signIn()
+    }
+  }
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <h2 class="display-5 fw-bold text-center">Sign In</h2>
 
