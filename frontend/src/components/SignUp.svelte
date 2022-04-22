@@ -40,18 +40,22 @@
     }
   }
 
-  function handleKeydown(e){
+  function handleKeydown(e) {
     if (e.keyCode === 13) {
-      signUp()
+      signUp();
     }
+  }
+
+  function nav() {
+    navigate("/about");
   }
 </script>
 
-<svelte:window on:keydown={handleKeydown}/>
+<svelte:window on:keydown={handleKeydown} />
 
 <h2 class="display-5 fw-bold text-center">Sign Up</h2>
 
-<Result result={result} />
+<Result {result} />
 
 <div class="mb-3">
   <label for="inputUsername" class="form-label">Username</label>
@@ -170,13 +174,15 @@
   </div>
 </div>
 
-<div class="mb-3 form-check">
+<!-- <div class="mb-3 form-check">
   <input type="checkbox" class="form-check-input" id="exampleCheck1" />
   <label class="form-check-label" for="exampleCheck1"
     >I agree to the terms of use</label
   >
-</div>
+</div> -->
 <button type="submit" class="btn btn-primary" on:click={signUp}>Sign up</button>
+<button class="btn btn-secondary" on:click={nav}>Help</button>
+
 <hr class="my-4" />
 <small class="text-muted"
   >By clicking Sign up, you agree to the terms of use.</small
