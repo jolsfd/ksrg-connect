@@ -1,14 +1,18 @@
 <script>
   import { loggedIn } from "../store";
   import { navigate } from "svelte-navigator";
+  import Loading from "./Loading.svelte";
   import Result from "./Result.svelte";
 
   let username = "";
   let password = "";
 
   let result = null;
+  let loading = false;
 
   async function signIn() {
+    loading = true;
+
     const res = await fetch(API_URL + "api/signin", {
       method: "POST",
       credentials: "include",
@@ -21,6 +25,8 @@
     const json = await res.json();
     result = JSON.parse(JSON.stringify(json));
     console.log(result);
+
+    loading = false;
 
     if (result.success) {
       loggedIn.set(true);
@@ -40,6 +46,8 @@
 <h2 class="display-5 fw-bold text-center">Sign In</h2>
 
 <Result result={result} />
+
+<Loading {loading} />
 
 <div class="mb-3">
   <label for="inputUsername" class="form-label">Username</label>
