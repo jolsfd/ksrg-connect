@@ -50,3 +50,27 @@ Caddy sets up the reverse proxy and handles ssl certificates automatically.
 ```bash
 sudo caddy run
 ```
+
+## Deploying on a VPS
+
+* add an user `ksrg-connect` with root privilegies
+* add public key to the VPS with `ssh-copy-id`
+---
+* edit `/etc/ssh/sshd_config`
+```
+PasswordAuthentication no
+PermitRootLogin no
+```
+---
+* setup up a firewall `ufw`
+* setup `fail2ban`
+* install `caddy`
+* install `docker`
+* setup `docker`
+* change domain and subdomain in `Caddyfile`
+* edit settings in the backend `config.yaml` for example password, admins, ...
+* add legal information for example DSGVO, Impressum, ...
+* refactor FAQ, start page, ...
+* point AAAA record to the server's ip address
+* point the subdomain to the server
+* be happy 🎉
